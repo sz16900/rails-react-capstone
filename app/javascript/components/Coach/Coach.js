@@ -78,11 +78,15 @@ const Coach = (props) => {
   };
 
   // Again, this basically says, wait until the everyting is loaded to begin mapping (looping over the list of reviews)
-  let reviews;
+  let included;
+  let reviews = [];
+  let appointments = [];
   if (loaded && coach.included) {
-    reviews = coach.included.map((item, index) => {
+    included = coach.included.map((item, index) => {
       if (item.type === 'review') {
-        return <Review key={index} attributes={item.attributes} />;
+        reviews.push(<Review key={index} attributes={item.attributes} />);
+      } else if (item.type === 'appointment') {
+        appointments.push('something else');
       }
     });
   }
@@ -93,9 +97,10 @@ const Coach = (props) => {
         <Fragment>
           <Column>
             <Main>
+              {console.log(reviews)}
               <Header
                 attributes={coach.data.attributes}
-                reviews={coach.included}
+                reviews={reviews.length}
               />
               {reviews}
             </Main>
