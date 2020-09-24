@@ -18,7 +18,11 @@ const Airlines = () => {
   });
 
   return (
-    <div id="home" className={'text-center mx-auto my-auto'}>
+    <div
+      id="home"
+      className={'text-center w-full'}
+      style={{ marginLeft: '20%' }}
+    >
       {/* <Header /> */}
       <div id="grid" className={'grid grid-cols-3 gap-4 p-6'}>
         {grid}
