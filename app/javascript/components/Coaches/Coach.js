@@ -63,6 +63,7 @@ const Coach = (props) => {
       <LinkWrapper>
         <Link to={'/coaches/' + props.attributes.slug}>View Coach</Link>
       </LinkWrapper>
+      <div id="tagline">{props.attributes.tagline}</div>
     </Card>
   );
 };
