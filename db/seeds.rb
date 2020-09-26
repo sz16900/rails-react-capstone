@@ -15,7 +15,8 @@ coaches = Coach.create([
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         age: 31,
         tagline: "The Shadow Dancer",
-        likes: 5
+        likes: 5,
+        price: 175
     },
     {
         name: "John Dow",
@@ -23,15 +24,19 @@ coaches = Coach.create([
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         age: 33,
         tagline: "The Dancer",
-        likes: 0
+        likes: 0,
+        price: 75
+
     },
     {
         name: "Nic Grab",
         image_url: "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         age: 32,
-        tagline: "The Shadow Dancer",
-        likes: 5
+        tagline: "The Lonely Dancer",
+        likes: 5,
+        price: 55
+
     }
 ])
 
