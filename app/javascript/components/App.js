@@ -1,4 +1,5 @@
 import React from 'react';
+import 'components/FontAwesomeIcons';
 import { Route, Switch } from 'react-router-dom';
 import Coaches from './Coaches/Coaches';
 import Coach from './Coach/Coach';
