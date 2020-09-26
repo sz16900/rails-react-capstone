@@ -9,6 +9,7 @@ module.exports = {
       green: '#97BF0F',
       gray: '#474747',
       borderGray: '#EFEFEF',
+      grayInfo: '#E2E3E5',
     },
   },
   variants: {},

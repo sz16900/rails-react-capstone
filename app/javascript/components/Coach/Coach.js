@@ -3,8 +3,7 @@ import axios from 'axios';
 import Header from './Header';
 import ReviewForm from './ReviewForm';
 import Review from './Review';
-import styled from 'styled-components';
-
+import Info from './Info';
 // const Wrapper = styled.div`
 //   margin-left: auto;
 //   margin-right: auto;
@@ -119,53 +118,7 @@ const Coach = (props) => {
               src={coach.data.attributes.image_url}
             />
           </div>
-          <div className="w-1/3">
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-            <h1>fajkldjaskljd</h1>
-          </div>
+          <Info attributes={coach.data.attributes}></Info>
         </div>
       )}
     </div>
