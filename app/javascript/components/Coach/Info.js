@@ -1,5 +1,4 @@
 import React from 'react';
-import Review from './Review';
 
 const Info = (props) => {
   const {
@@ -33,7 +32,14 @@ const Info = (props) => {
           <p>{likes}</p>
         </div>
       </div>
-      <div>{props.reviews}</div>
+      <div className="flex justify-between mt-8">
+        <button className="bg-yellow hover:bg-yellowHover text-white font-bold py-2 px-4 rounded">
+          Like!
+        </button>
+        <button className="bg-green hover:bg-greenHover text-white font-bold py-2 px-4 rounded">
+          Review!
+        </button>
+      </div>
     </div>
   );
 };

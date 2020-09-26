@@ -4,31 +4,6 @@ import Header from './Header';
 import ReviewForm from './ReviewForm';
 import Review from './Review';
 import Info from './Info';
-// const Wrapper = styled.div`
-//   margin-left: auto;
-//   margin-right: auto;
-// `;
-
-// const Column = styled.div`
-//   background: #fff;
-//   max-width: 50%;
-//   width: 50%;
-//   float: left;
-//   height: 100vh;
-//   overflow-x: scroll;
-//   overflow-y: scroll;
-//   overflow: scroll;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-//   &:last-child {
-//     border-top: 1px solid rgba(255, 255, 255, 0.5);
-//   }
-// `;
-
-// const Main = styled.div`
-//   padding-left: 60px;
-// `;
 
 const Coach = (props) => {
   const [coach, setCoach] = useState({});
@@ -112,13 +87,14 @@ const Coach = (props) => {
         //   </Column>
         // </Fragment>
         <div className="flex w-full ">
-          <div className=" w-2/5 h-full overflow-y-auto">
+          <div className=" w-2/5 h-full overflow-y-auto p-4">
             <img
-              className="object-contain h-64 w-full mt-56"
+              className="object-contain h-64 w-full my-8"
               src={coach.data.attributes.image_url}
             />
+            <div>{reviews}</div>
           </div>
-          <Info attributes={coach.data.attributes} reviews={reviews}></Info>
+          <Info attributes={coach.data.attributes}></Info>
         </div>
       )}
     </div>
