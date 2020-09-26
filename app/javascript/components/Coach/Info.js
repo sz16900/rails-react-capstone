@@ -2,7 +2,6 @@ import React from 'react';
 import Review from './Review';
 
 const Info = (props) => {
-  console.log(props);
   const {
     name,
     avg_score,
@@ -34,6 +33,7 @@ const Info = (props) => {
           <p>{likes}</p>
         </div>
       </div>
+      <div>{props.reviews}</div>
     </div>
   );
 };

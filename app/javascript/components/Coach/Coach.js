@@ -118,7 +118,7 @@ const Coach = (props) => {
               src={coach.data.attributes.image_url}
             />
           </div>
-          <Info attributes={coach.data.attributes}></Info>
+          <Info attributes={coach.data.attributes} reviews={reviews}></Info>
         </div>
       )}
     </div>
