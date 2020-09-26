@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './Review';
 
 const Info = (props) => {
   console.log(props);
@@ -11,16 +12,28 @@ const Info = (props) => {
     tagline,
   } = props.attributes;
   return (
-    <div className="w-1/3 p-4 mt-24 ">
-      <p className="text-3xl font-bold text-right">{name}</p>
-      <p className="text-sm text-gray text-right">{tagline}</p>
-      <div className="bg-grayInfo flex justify-between">
-        <p>Price per Hour:</p>
-        <p>{price}</p>
+    <div className="w-3/5 p-4  ">
+      <div className="my-12">
+        <p className="text-3xl font-bold text-right">{name}</p>
+        <p className="text-sm text-gray text-right">{tagline}</p>
       </div>
-      <p>{description}</p>
-      <p>{avg_score}</p>
-      <p>{likes}</p>
+      <div>
+        <div className="bg-grayInfo flex justify-between p-3">
+          <p>Price per Hour:</p>
+          <p>{price}</p>
+        </div>
+        <div className="flex justify-between p-3">
+          <p>{description}</p>
+        </div>
+        <div className="bg-grayInfo flex justify-between p-3">
+          <p>Rating:</p>
+          <p>{`${avg_score} / 5`}</p>
+        </div>
+        <div className=" flex justify-between p-3">
+          <p>Likes:</p>
+          <p>{likes}</p>
+        </div>
+      </div>
     </div>
   );
 };

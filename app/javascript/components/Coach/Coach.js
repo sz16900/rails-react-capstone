@@ -112,7 +112,7 @@ const Coach = (props) => {
         //   </Column>
         // </Fragment>
         <div className="flex w-full ">
-          <div className=" w-2/3 h-full overflow-y-auto">
+          <div className=" w-2/5 h-full overflow-y-auto">
             <img
               className="object-contain h-64 w-full mt-56"
               src={coach.data.attributes.image_url}
