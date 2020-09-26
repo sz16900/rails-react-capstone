@@ -5,31 +5,31 @@ import ReviewForm from './ReviewForm';
 import Review from './Review';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-`;
+// const Wrapper = styled.div`
+//   margin-left: auto;
+//   margin-right: auto;
+// `;
 
-const Column = styled.div`
-  background: #fff;
-  max-width: 50%;
-  width: 50%;
-  float: left;
-  height: 100vh;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &:last-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-  }
-`;
+// const Column = styled.div`
+//   background: #fff;
+//   max-width: 50%;
+//   width: 50%;
+//   float: left;
+//   height: 100vh;
+//   overflow-x: scroll;
+//   overflow-y: scroll;
+//   overflow: scroll;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   &:last-child {
+//     border-top: 1px solid rgba(255, 255, 255, 0.5);
+//   }
+// `;
 
-const Main = styled.div`
-  padding-left: 60px;
-`;
+// const Main = styled.div`
+//   padding-left: 60px;
+// `;
 
 const Coach = (props) => {
   const [coach, setCoach] = useState({});
@@ -45,7 +45,6 @@ const Coach = (props) => {
       .then((resp) => {
         setCoach(resp.data);
         setLoaded(true);
-        console.log(resp.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -58,7 +57,6 @@ const Coach = (props) => {
     e.preventDefault();
 
     const csrfToken = document.querySelector('[name=csrf-token]').content;
-    console.log(csrfToken);
     axios.defaults.headers.common['X_CSRF_TOKEN'] = csrfToken;
 
     const coach_id = coach.data.id;
@@ -92,31 +90,85 @@ const Coach = (props) => {
   }
 
   return (
-    <Wrapper style={{ marginLeft: '20%' }}>
+    <div className="flex w-screen" style={{ marginLeft: '20%' }}>
       {loaded && (
-        <Fragment>
-          <Column>
-            <Main>
-              {console.log(reviews)}
-              <Header
-                attributes={coach.data.attributes}
-                reviews={reviews.length}
-              />
-              {reviews}
-            </Main>
-          </Column>
-          <Column>
-            <ReviewForm
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              attributes={coach.data.attributes}
-              setRating={setRating}
-              review={review}
+        // <Fragment>
+        //   <Column>
+        //     <Main>
+        //       <Header
+        //         attributes={coach.data.attributes}
+        //         reviews={reviews.length}
+        //       />
+        //       {reviews}
+        //     </Main>
+        //   </Column>
+        //   <Column>
+        //     <ReviewForm
+        //       handleChange={handleChange}
+        //       handleSubmit={handleSubmit}
+        //       attributes={coach.data.attributes}
+        //       setRating={setRating}
+        //       review={review}
+        //     />
+        //   </Column>
+        // </Fragment>
+        <div className="flex w-full ">
+          <div className=" w-2/3 h-full overflow-y-auto">
+            <img
+              className="object-contain h-64 w-full mt-56"
+              src={coach.data.attributes.image_url}
             />
-          </Column>
-        </Fragment>
+          </div>
+          <div className="w-1/3">
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+            <h1>fajkldjaskljd</h1>
+          </div>
+        </div>
       )}
-    </Wrapper>
+    </div>
   );
 };
 
