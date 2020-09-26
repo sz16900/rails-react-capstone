@@ -27,7 +27,7 @@ const Airlines = () => {
         <h1 className="text-5xl font-bold">Our Coaches</h1>
         <p className="text-gray">Please select a Coach</p>
       </div>
-      <div id="grid" className={'grid grid-cols-1 gap-4 p-6'}>
+      <div id="grid" className={'grid grid-cols-3 gap-4 p-6'}>
         {grid}
       </div>
     </div>

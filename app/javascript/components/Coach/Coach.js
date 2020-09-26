@@ -92,7 +92,7 @@ const Coach = (props) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper style={{ marginLeft: '20%' }}>
       {loaded && (
         <Fragment>
           <Column>
