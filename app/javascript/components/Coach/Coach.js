@@ -8,7 +8,7 @@ const Coach = (props) => {
   const [coach, setCoach] = useState({});
   const [review, setReview] = useState({});
   const [loaded, setLoaded] = useState(false);
-  const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const slug = props.match.params.slug;
@@ -64,54 +64,57 @@ const Coach = (props) => {
     });
   }
 
-  return (
-    <div className="flex w-screen" style={{ marginLeft: '20%' }}>
-      {loaded && (
-        <div className="flex w-full ">
-          <div className=" w-2/5 h-full overflow-y-auto p-4">
-            <img
-              className="object-contain h-64 w-full my-8"
-              src={coach.data.attributes.image_url}
-            />
-            <div>{reviews}</div>
-          </div>
-          <div className="w-3/5 p-4">
-            <Info
-              attributes={coach.data.attributes}
-              reviews={reviews.length}
-            ></Info>
-            <div className="flex justify-between mt-8">
-              <button className="bg-yellow hover:bg-yellowHover text-white font-bold py-2 px-4 rounded">
-                Like!
-              </button>
-              <button
-                className="bg-green text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
-                type="button"
-                style={{ transition: 'all .15s ease' }}
-                onClick={() => setShowModal(true)}
-              >
-                Review!
-              </button>
-              {showModal ? (
-                <>
-                  <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-                    <ReviewForm
-                      handleChange={handleChange}
-                      handleSubmit={handleSubmit}
-                      attributes={coach.data.attributes}
-                      setRating={setRating}
-                      review={review}
-                    />
-                  </div>
-                  <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                </>
-              ) : null}
+  if (showModal) {
+    return (
+      <div className="bg-black flex w-screen" style={{ marginLeft: '20%' }}>
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <ReviewForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            attributes={coach.data.attributes}
+            setRating={setRating}
+            review={review}
+          />
+        </div>
+        <div className="opacity-25 fixed inset-0 z-40 "></div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="flex w-screen" style={{ marginLeft: '20%' }}>
+        {loaded && (
+          <div className="flex w-full ">
+            <div className=" w-2/5 h-full overflow-y-auto p-4">
+              <img
+                className="object-contain h-64 w-full my-8"
+                src={coach.data.attributes.image_url}
+              />
+              <div>{reviews}</div>
+            </div>
+            <div className="w-3/5 p-4">
+              <Info
+                attributes={coach.data.attributes}
+                reviews={reviews.length}
+              ></Info>
+              <div className="flex justify-between mt-8">
+                <button className="bg-yellow hover:bg-yellowHover text-white font-bold py-2 px-4 rounded">
+                  Like!
+                </button>
+                <button
+                  className="bg-green text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                  type="button"
+                  style={{ transition: 'all .15s ease' }}
+                  onClick={() => setShowModal(true)}
+                >
+                  Review!
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>
+    );
+  }
 };
 
 export default Coach;

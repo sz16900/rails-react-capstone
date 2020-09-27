@@ -135,39 +135,51 @@ const ReviewForm = (props) => {
     );
   });
   return (
-    <ReviewWrapper>
-      <form onSubmit={props.handleSubmit}>
-        <ReviewHeadline>
-          Have An Experience with {props.attributes.name}? Add Your Review!
-        </ReviewHeadline>
-        <Field>
+    <div id="review-form-wrapper" className="w-full max-w-xs">
+      <form
+        onSubmit={props.handleSubmit}
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
+      >
+        <div className="mb-4">
           <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={props.handleChange}
             type="text"
             name="title"
             placeholder="Review Title"
             value={props.review.title}
           />
-        </Field>
-        <Field>
+        </div>
+        <div>
           <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={props.handleChange}
             type="text"
             name="description"
             placeholder="Review Description"
             value={props.review.description}
           />
-        </Field>
-        <Field>
-          <RatingContainer>
-            <RatingBoxTitle>Rate This Airline</RatingBoxTitle>
-            <RatingBox>{ratingOptions}</RatingBox>
+        </div>
+        <div>
+          <RatingContainer id="rating-container">
+            <RatingBoxTitle id="rating-box-title">
+              Rate this Coach!
+            </RatingBoxTitle>
+            <RatingBox id="rating-box">{ratingOptions}</RatingBox>
           </RatingContainer>
-        </Field>
-        <SubmitBtn type="Submit">Create Review</SubmitBtn>
-        {props.error && <Error>{props.error}</Error>}
+        </div>
+        <div className="flex items-center justify-center">
+          <button
+            className="bg-green hover:bg-greenHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="Submit"
+          >
+            Create Review
+          </button>
+
+          {props.error && <div id="error">{props.error}</div>}
+        </div>
       </form>
-    </ReviewWrapper>
+    </div>
   );
 };
 

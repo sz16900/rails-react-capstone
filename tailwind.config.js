@@ -6,11 +6,12 @@ module.exports = {
   purge: [],
   theme: {
     colors: {
+      black: '#060606',
       green: '#97BF0F',
+      greenHover: '#92b90c',
       gray: '#474747',
       borderGray: '#EFEFEF',
       grayInfo: '#E2E3E5',
-      greenHover: '#92b90c',
       white: '#ffffff',
       yellow: '#F7B61A',
       yellowHover: '#e3a40d',
