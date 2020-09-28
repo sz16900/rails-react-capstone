@@ -17,8 +17,10 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react_ujs": "^2.6.1",
+    "redux": "^4.0.5",
     "styled-components": "^5.2.0",
     "tailwindcss": "^1.8.10",
     "turbolinks": "^5.2.0"

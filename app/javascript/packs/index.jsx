@@ -10,12 +10,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import App from '../components/App';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import ReviewList from '../components/ReviewList';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Router>
-      <Route path="/" component={App} />
+      {/* <Route path="/" component={App} /> */}
+      <Route exact path="/" component={ReviewList} />
     </Router>,
     document.body.appendChild(document.createElement('div'))
   );

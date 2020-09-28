@@ -3,6 +3,14 @@ module Api
         class ReviewsController < ApplicationController
             protect_from_forgery with: :null_session
 
+            def index 
+                if user_signed_in?
+                  render json: current_user.reviews
+                else
+                  render json: {}, status: 401
+                end 
+            end
+
 
             def create
                 review = coach.reviews.new(review_params)
