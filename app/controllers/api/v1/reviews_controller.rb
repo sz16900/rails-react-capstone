@@ -15,7 +15,6 @@ module Api
             def create
                 if user_signed_in?
                     review = coach.reviews.create(review_params.merge(:user_id => current_user.id))
-                    p review
 
                     if review.save
                         render json: ReviewSerializer.new(review).serialized_json

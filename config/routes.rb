@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :coaches, param: :slug
       resources :reviews, only: %i[create destroy index]
+      resources :appointments, only: %i[create destroy index]
 
     end
   end

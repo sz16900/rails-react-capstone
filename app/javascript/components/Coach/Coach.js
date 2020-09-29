@@ -1,14 +1,17 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReviewForm from './ReviewForm';
 import Review from './Review';
 import Info from './Info';
+import Datetime from 'react-datetime';
 
 const Coach = (props) => {
   const [coach, setCoach] = useState({});
-  const [review, setReview] = useState({});
   const [loaded, setLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [review, setReview] = useState({});
+  const [showModalReview, setShowModalReview] = useState(false);
+  const [appointment, setAppointment] = useState({});
+  const [showModalAppointment, setShowModalAppointment] = useState(false);
 
   useEffect(() => {
     const slug = props.match.params.slug;
@@ -17,17 +20,19 @@ const Coach = (props) => {
     axios
       .get(url)
       .then((resp) => {
+        console.log(resp.data);
         setCoach(resp.data);
         setLoaded(true);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const handleChange = (e) => {
+  const handleChangeReview = (e) => {
     e.preventDefault();
     setReview(Object.assign({ ...review, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmitReview = (e) => {
     e.preventDefault();
 
     const csrfToken = document.querySelector('[name=csrf-token]').content;
@@ -40,7 +45,24 @@ const Coach = (props) => {
         const included = [...coach.included, resp.data.data];
         setCoach({ ...coach, included });
         setReview({ title: '', description: '', score: 0 });
-        setShowModal(false);
+        setShowModalReview(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleSubmitAppointment = (e) => {
+    e.preventDefault();
+
+    const csrfToken = document.querySelector('[name=csrf-token]').content;
+    axios.defaults.headers.common['X_CSRF_TOKEN'] = csrfToken;
+
+    const coach_id = coach.data.id;
+    console.log(appointment);
+    axios
+      .post('/api/v1/appointments', { appointment, coach_id })
+      .then((resp) => {
+        setAppointment({});
+        setShowModalAppointment(false);
       })
       .catch((err) => console.log(err));
   };
@@ -64,17 +86,47 @@ const Coach = (props) => {
     });
   }
 
-  if (showModal) {
+  if (showModalReview) {
     return (
       <div className="bg-black flex w-screen" style={{ marginLeft: '20%' }}>
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
           <ReviewForm
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
+            handleChangeReview={handleChangeReview}
+            handleSubmitReview={handleSubmitReview}
             attributes={coach.data.attributes}
             setRating={setRating}
             review={review}
           />
+        </div>
+        <div className="opacity-25 fixed inset-0 z-40 "></div>
+      </div>
+    );
+  } else if (showModalAppointment) {
+    return (
+      <div className="bg-black flex w-screen" style={{ marginLeft: '20%' }}>
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <Datetime
+            onChange={(e) => {
+              const csrfToken = document.querySelector('[name=csrf-token]')
+                .content;
+              axios.defaults.headers.common['X_CSRF_TOKEN'] = csrfToken;
+
+              var coach_id = coach.data.id;
+              var appointment_time = e._d;
+              setAppointment(
+                Object.assign({
+                  appointment_time: appointment_time,
+                })
+              );
+            }}
+          />
+          <button
+            className="bg-green hover:bg-greenHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="Submit"
+            onClick={(e) => handleSubmitAppointment(e)}
+          >
+            Submit Appointment
+          </button>
         </div>
         <div className="opacity-25 fixed inset-0 z-40 "></div>
       </div>
@@ -101,10 +153,18 @@ const Coach = (props) => {
                   Like!
                 </button>
                 <button
+                  type="button"
+                  style={{ transition: 'all .15s ease' }}
+                  onClick={() => setShowModalAppointment(true)}
+                  className="bg-blue hover:bg-blueHover text-white font-bold py-2 px-4 rounded"
+                >
+                  Book Appointment!
+                </button>
+                <button
                   className="bg-green text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                   type="button"
                   style={{ transition: 'all .15s ease' }}
-                  onClick={() => setShowModal(true)}
+                  onClick={() => setShowModalReview(true)}
                 >
                   Review!
                 </button>

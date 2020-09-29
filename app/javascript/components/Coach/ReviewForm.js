@@ -137,13 +137,13 @@ const ReviewForm = (props) => {
   return (
     <div id="review-form-wrapper" className="w-full max-w-xs">
       <form
-        onSubmit={props.handleSubmit}
+        onSubmit={props.handleSubmitReview}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
       >
         <div className="mb-4">
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={props.handleChange}
+            onChange={props.handleChangeReview}
             type="text"
             name="title"
             placeholder="Review Title"
@@ -153,7 +153,7 @@ const ReviewForm = (props) => {
         <div>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={props.handleChange}
+            onChange={props.handleChangeReview}
             type="text"
             name="description"
             placeholder="Review Description"
