@@ -14,7 +14,6 @@
 
 .star-wrapper::before,
 .stars::before {
-  font-family: 'Arial';
-  /* font-family: 'FontAwesome'; */
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
   content: '\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005';
 }
