@@ -9,20 +9,16 @@ const Coaches = () => {
   useEffect(() => {
     axios
       .get('/api/v1/coaches.json')
-      .then(resp => setCoaches(resp.data.data))
-      .catch(err => console.log(err));
+      .then((resp) => setCoaches(resp.data.data))
+      .catch((err) => console.log(err));
   }, [coaches.length]);
 
-  const grid = coaches.map(item => (
+  const grid = coaches.map((item) => (
     <Coach key={item.attributes.name} attributes={item.attributes} />
   ));
 
   return (
-    <div
-      id="home"
-      className="text-center w-full"
-      style={{ marginLeft: '20%' }}
-    >
+    <div id="home" className="text-center w-full" style={{ marginLeft: '20%' }}>
       <div className="mt-24">
         <h1 className="text-5xl font-bold">Our Coaches</h1>
         <p className="text-gray">Please select a Coach</p>

@@ -1,13 +1,12 @@
 /* eslint-disable */
 
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../Rating/Rating';
 
-const Coach = props => (
+const Coach = (props) => (
   <Link to={`/coaches/${props.attributes.slug}`}>
-    <div id="card ">
+    <div id="card">
       <div id="coach-logo">
         <img
           src={props.attributes.image_url}
@@ -29,6 +28,5 @@ const Coach = props => (
 );
 
 export default Coach;
-
 
 /* eslint-enable */
