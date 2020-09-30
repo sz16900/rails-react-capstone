@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import ReviewForm from './ReviewForm';
 
@@ -21,9 +23,11 @@ export default function Modal() {
           >
             <ReviewForm />
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black" />
         </>
       ) : null}
     </>
   );
 }
+
+/* eslint-enable */

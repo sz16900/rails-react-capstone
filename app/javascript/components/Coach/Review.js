@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import React from 'react';
-import Rating from '../Rating/Rating';
 import styled from 'styled-components';
+import Rating from '../Rating/Rating';
 
 const Card = styled.div`
   border-radius: 4px;
@@ -61,7 +63,7 @@ const AvatarWrapper = styled.div`
   }
 `;
 
-const Review = (props) => {
+const Review = props => {
   const { score, title, description } = props.attributes;
   return (
     <Card>
@@ -75,3 +77,5 @@ const Review = (props) => {
 };
 
 export default Review;
+
+/* eslint-enable */

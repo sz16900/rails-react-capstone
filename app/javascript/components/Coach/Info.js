@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 import React, { Fragment } from 'react';
 
-const Info = (props) => {
+const Info = props => {
   const {
     name,
     avg_score,
@@ -10,7 +12,7 @@ const Info = (props) => {
     tagline,
   } = props.attributes;
   return (
-    <Fragment>
+    <>
       <div className="my-12">
         <p className="text-3xl font-bold text-right">{name}</p>
         <p className="text-sm text-gray text-right">{tagline}</p>
@@ -36,8 +38,10 @@ const Info = (props) => {
           <p>{props.reviews}</p>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
 export default Info;
+
+/* eslint-enable */

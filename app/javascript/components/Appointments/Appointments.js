@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -5,12 +8,12 @@ const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [coaches, setCoaches] = useState([]);
   useEffect(() => {
-    let coachArr = {};
+    const coachArr = {};
     axios
       .get('/api/v1/appointments.json')
-      .then((resp) => {
+      .then(resp => {
         setAppointments(resp.data.data);
-        resp.data.included.map((item) => {
+        resp.data.included.map(item => {
           coachArr[item.id] = {
             name: item.attributes.name,
             price: item.attributes.price,
@@ -18,25 +21,23 @@ const Appointments = () => {
         });
         setCoaches(coachArr);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }, []);
 
-  const grid = appointments.map((item) => {
-    return (
-      <tr>
-        <td className="border px-4 py-2">
-          {coaches[item.attributes.coach_id]?.name}
-        </td>
-        <td className="border px-4 py-2">
-          {`$${coaches[item.attributes.coach_id]?.price}`}
-        </td>
-        <td className="border px-4 py-2">{item.attributes.appointment_time}</td>
-      </tr>
-    );
-  });
+  const grid = appointments.map(item => (
+    <tr>
+      <td className="border px-4 py-2">
+        {coaches[item.attributes.coach_id]?.name}
+      </td>
+      <td className="border px-4 py-2">
+        {`$${coaches[item.attributes.coach_id]?.price}`}
+      </td>
+      <td className="border px-4 py-2">{item.attributes.appointment_time}</td>
+    </tr>
+  ));
 
   return (
-    <div className={'text-center w-full'} style={{ marginLeft: '20%' }}>
+    <div className="text-center w-full" style={{ marginLeft: '20%' }}>
       <h1 className="mt-8 mb-4 text-4xl font-bold">My Appointments</h1>
       <table className="table-fixed">
         <thead>
@@ -53,3 +54,5 @@ const Appointments = () => {
 };
 
 export default Appointments;
+
+/* eslint-enable */

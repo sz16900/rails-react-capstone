@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
@@ -117,23 +120,21 @@ const Error = styled.div`
   padding: 4px;
 `;
 
-const ReviewForm = (props) => {
-  const ratingOptions = [5, 4, 3, 2, 1].map((score, index) => {
-    return (
-      <Fragment>
-        <input
-          type="radio"
-          value={score}
-          name="rating"
-          id={`rating-${score}`}
-          checked={props.review.score == score}
-          onChange={() => console.log('selected:', score)}
-        ></input>
-        {/* Kinda lost here with the bind, but I think it binds to each score ([5,4,3,2,1]) bc we are looping through each score */}
-        <label onClick={props.setRating.bind(this, score)}></label>
-      </Fragment>
-    );
-  });
+const ReviewForm = props => {
+  const ratingOptions = [5, 4, 3, 2, 1].map((score, index) => (
+    <>
+      <input
+        type="radio"
+        value={score}
+        name="rating"
+        id={`rating-${score}`}
+        checked={props.review.score == score}
+        onChange={() => console.log('selected:', score)}
+      />
+      {/* Kinda lost here with the bind, but I think it binds to each score ([5,4,3,2,1]) bc we are looping through each score */}
+      <label onClick={props.setRating.bind(this, score)} />
+    </>
+  ));
   return (
     <div id="review-form-wrapper" className="w-full max-w-xs">
       <form
@@ -184,3 +185,5 @@ const ReviewForm = (props) => {
 };
 
 export default ReviewForm;
+
+/* eslint-enable */

@@ -8,21 +8,20 @@ import Coach from './Coach/Coach';
 import Header from './Header';
 import Appointments from './Appointments/Appointments';
 import configureStore from '../redux/configureStore';
+
 const store = configureStore();
 
-const App = () => {
-  return (
-    <div id="wrapper" className={'flex relative'}>
-      <Provider store={store}>
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Coaches} />
-          <Route exact path="/coaches/:slug" component={Coach} />
-          <Route exact path="/appointments" component={Appointments} />
-        </Switch>
-      </Provider>
-    </div>
-  );
-};
+const App = () => (
+  <div id="wrapper" className="flex relative">
+    <Provider store={store}>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Coaches} />
+        <Route exact path="/coaches/:slug" component={Coach} />
+        <Route exact path="/appointments" component={Appointments} />
+      </Switch>
+    </Provider>
+  </div>
+);
 
 export default App;
