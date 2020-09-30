@@ -14,6 +14,10 @@
     "@rails/webpacker": "4.3.0",
     "axios": "^0.20.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "jest-enzyme": "^7.1.2",
+    "moment": "^2.29.0",
     "moment-timezone": "^0.5.31",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -31,6 +35,18 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-jest": "^26.3.0",
+    "jest": "^26.4.2",
+    "regenerator-runtime": "^0.13.7",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
   }
 }

@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "Welcomes", type: :request do
 
-  describe "GET /home" do
+  describe "GET /" do
     it "returns http success" do
-      get "/welcome/home"
+      get "/users/sign_up"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /app" do
     it "returns http success" do
-      get "/welcome/app"
+      get "/users/sign_in"
       expect(response).to have_http_status(:success)
     end
   end

@@ -1,9 +1,9 @@
 <nav style="text-align: right">
 <% if user_signed_in? %>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>          
+    <%= link_to('Logout', destroy_user_session_path, method: :delete )  %>          
   <% else %>
-    <%= link_to('Login', new_user_session_path)  %> |
-    <%= link_to('Sign Up', new_user_registration_path)  %>  
+    <%= link_to('Login', new_user_session_path, :class => 'bg-blue hover:bg-blueHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline')  %> |
+    <%= link_to('Sign Up', new_user_registration_path, :class => 'bg-yellow hover:bg-yellowHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline')  %>  
   <% end %>
 </nav>
 <h1>Welcome#home</h1>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 import Coach from './Coach';
 
-const Airlines = () => {
+const Coaches = () => {
   const [coaches, setCoaches] = useState([]);
   useEffect(() => {
     axios
@@ -34,4 +34,4 @@ const Airlines = () => {
   );
 };
 
-export default Airlines;
+export default Coaches;

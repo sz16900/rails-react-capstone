@@ -8,21 +8,16 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import App from '../components/App';
 import { HashRouter as Router, Route } from 'react-router-dom';
-import configureStore from '../redux/configureStore';
-const store = configureStore();
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <Router>
-        <Route path="/" component={App} />
-      </Router>
-    </Provider>,
+    <Router>
+      <Route path="/" component={App} />
+    </Router>,
     document.body.appendChild(document.createElement('div'))
   );
 });
