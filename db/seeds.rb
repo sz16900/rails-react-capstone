@@ -81,12 +81,14 @@ reviews = Review.create([
       title: "Great coach",
       description: "great advise",
       score:  5,
-      coach: coaches.first
+      coach: coaches.first,
+      user: users.first
     },
     {
       title: "Bad coach",
       description: "bad advice",
       score:  1,
-      coach: coaches.first
+      coach: coaches.first,
+      user: users.first
     }
   ])

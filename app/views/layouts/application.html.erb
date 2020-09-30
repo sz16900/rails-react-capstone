@@ -4,14 +4,15 @@
     <title>BookACoach</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_pack_tag 'index' %>
+    <%# <%= javascript_pack_tag 'index' %> 
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <p class="alert"><%= alert %></p>
+       <%# <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> 
     <%= yield %>
   </body>
 </html>

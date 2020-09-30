@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Coaches from './Coaches/Coaches';
 import Coach from './Coach/Coach';
 import Header from './Header';
+import Appointments from './Appointments/Appointments';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Coaches} />
         <Route exact path="/coaches/:slug" component={Coach} />
+        <Route exact path="/appointments" component={Appointments} />
       </Switch>
     </div>
   );

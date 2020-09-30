@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/Book-A-Coach.png';
 
 const Header = () => {
+  const handleLogout = () => {
+    const link = document.createElement('a');
+    link.setAttribute('href', '/users/sign_out');
+    link.setAttribute('rel', 'nofollow');
+    link.setAttribute('data-method', 'delete');
+    document.body.appendChild(link);
+    link.click();
+  };
+
   return (
     <div
       id="sidebar"
@@ -25,15 +34,7 @@ const Header = () => {
         <li className="mr-3">
           <Link
             className="inline-block py-3 px-4 text-black hover:bg-green py-1 px-3"
-            to={'/'}
-          >
-            Reviews
-          </Link>
-        </li>
-        <li className="mr-3">
-          <Link
-            className="inline-block py-3 px-4 text-black hover:bg-green py-1 px-3"
-            to={'/'}
+            to={'/appointments'}
           >
             Appointments
           </Link>
@@ -45,6 +46,14 @@ const Header = () => {
           >
             About
           </Link>
+        </li>
+        <li className="mr-3">
+          <button
+            className="inline-block py-3 px-4 text-black font-bold hover:bg-green py-1 px-3"
+            onClick={handleLogout}
+          >
+            Sign Out
+          </button>
         </li>
       </ul>
       <div id="footer" className="bg-red-900 p-4 text-sm text-center">
