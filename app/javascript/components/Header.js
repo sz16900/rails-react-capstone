@@ -11,19 +11,16 @@ import logo from '../../assets/images/Book-A-Coach.png';
 const GET_THINGS_REQUEST = 'GET_THINGS_REQUEST';
 const GET_THINGS_SUCCESS = 'GET_THINGS_SUCCESS';
 
-const getThings = () =>
-  // console.log('getThings() Action!!');
-  dispatch => {
-    dispatch({ type: GET_THINGS_REQUEST });
-    return axios
-      .get('/api/v1/users.json')
-      .then(resp => {
-        console.log(resp.data);
-        dispatch(getThingsSuccess(resp.data));
-      })
-      .catch(err => console.log(err));
-  };
-export const getThingsSuccess = payload => ({
+const getThings = () => (dispatch) => {
+  dispatch({ type: GET_THINGS_REQUEST });
+  return axios
+    .get('/api/v1/users.json')
+    .then((resp) => {
+      dispatch(getThingsSuccess(resp.data));
+    })
+    .catch((err) => console.log(err));
+};
+export const getThingsSuccess = (payload) => ({
   type: GET_THINGS_SUCCESS,
   payload,
 });
@@ -65,24 +62,15 @@ class Header extends React.Component {
               Appointments
             </Link>
           </li>
-          {/* <li className="mr-3">
-            <Link
-              className="inline-block py-3 px-4 text-black hover:bg-green py-1 px-3"
-              to={'/'}
-            >
-              About
-            </Link>
-          </li> */}
           <li className="mr-3">
             <button
               className="inline-block py-3 px-4 text-black font-bold hover:bg-red py-1 px-3"
               onClick={this.handleLogout}
             >
-              Sign Out
-              {' '}
+              Sign Out{' '}
               <h5 className="text-xs text-gray">
                 of
-                {this.props.name}
+                {` ${this.props.name}`}
               </h5>
             </button>
           </li>
@@ -102,7 +90,7 @@ class Header extends React.Component {
 }
 
 const structuredSelector = createStructuredSelector({
-  name: state => state.name,
+  name: (state) => state.name,
 });
 
 const mapDispatchtoProps = { getThings };

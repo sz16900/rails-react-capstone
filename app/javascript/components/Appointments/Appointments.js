@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -11,9 +10,9 @@ const Appointments = () => {
     const coachArr = {};
     axios
       .get('/api/v1/appointments.json')
-      .then(resp => {
+      .then((resp) => {
         setAppointments(resp.data.data);
-        resp.data.included.map(item => {
+        resp.data.included.map((item) => {
           coachArr[item.id] = {
             name: item.attributes.name,
             price: item.attributes.price,
@@ -21,10 +20,10 @@ const Appointments = () => {
         });
         setCoaches(coachArr);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
-  const grid = appointments.map(item => (
+  const grid = appointments.map((item) => (
     <tr>
       <td className="border px-4 py-2">
         {coaches[item.attributes.coach_id]?.name}
@@ -32,7 +31,9 @@ const Appointments = () => {
       <td className="border px-4 py-2">
         {`$${coaches[item.attributes.coach_id]?.price}`}
       </td>
-      <td className="border px-4 py-2">{item.attributes.appointment_time}</td>
+      <td className="border px-4 py-2">
+        {new Date(item.attributes.appointment_time).toUTCString()}
+      </td>
     </tr>
   ));
 
