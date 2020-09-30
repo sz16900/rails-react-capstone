@@ -28,7 +28,7 @@ const Appointments = () => {
           {coaches[item.attributes.coach_id]?.name}
         </td>
         <td className="border px-4 py-2">
-          {coaches[item.attributes.coach_id]?.price}
+          {`$${coaches[item.attributes.coach_id]?.price}`}
         </td>
         <td className="border px-4 py-2">{item.attributes.appointment_time}</td>
       </tr>
@@ -37,7 +37,7 @@ const Appointments = () => {
 
   return (
     <div className={'text-center w-full'} style={{ marginLeft: '20%' }}>
-      <h1>My Appointments</h1>
+      <h1 className="mt-8 mb-4 text-4xl font-bold">My Appointments</h1>
       <table className="table-fixed">
         <thead>
           <tr>
