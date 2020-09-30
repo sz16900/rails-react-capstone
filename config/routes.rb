@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resources :coaches, param: :slug
       resources :reviews, only: %i[create destroy index]
       resources :appointments, only: %i[create destroy index]
+      resources :users, only: %i[index]
 
     end
   end
