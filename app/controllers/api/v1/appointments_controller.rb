@@ -5,7 +5,8 @@ module Api
 
             def index 
                 if user_signed_in?
-                  render json: current_user.appointments
+                    appointments = current_user.appointments
+                    render json: AppointmentSerializer.new(appointments, options).serialized_json
                 else
                   render json: {}, status: 401
                 end 
@@ -14,7 +15,6 @@ module Api
 
             def create
                 if user_signed_in?
-                    p "Here"
                     appointment = coach.appointments.create(appointment_params.merge(:user_id => current_user.id))
 
                     if appointment.save
@@ -38,12 +38,16 @@ module Api
             
             private
 
+            def options 
+                @options ||= {include: %i[coach]}
+            end
+
             def coach
                 @coach ||= Coach.find(params[:coach_id])
             end
 
             def appointment_params
-                params.require(:appointment).permit(:appointment_time, :coach_id) 
+                params.require(:appointment).permit(:coach_id, :user_id, :appointment_time) 
             end
 
         end

@@ -25,15 +25,7 @@ const Header = () => {
         <li className="mr-3">
           <Link
             className="inline-block py-3 px-4 text-black hover:bg-green py-1 px-3"
-            to={'/'}
-          >
-            Reviews
-          </Link>
-        </li>
-        <li className="mr-3">
-          <Link
-            className="inline-block py-3 px-4 text-black hover:bg-green py-1 px-3"
-            to={'/'}
+            to={'/appointments'}
           >
             Appointments
           </Link>
