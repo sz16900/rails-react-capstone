@@ -20,6 +20,8 @@ module.exports = {
       red: '#ED5665',
     },
   },
-  variants: {},
+  variants: {
+    tableLayout: ['responsive', 'hover', 'focus'],
+  },
   plugins: [],
 };
