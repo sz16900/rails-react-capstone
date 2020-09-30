@@ -11,11 +11,7 @@ In this project, I am going to make a React-Redux-Ruby-rails full-stack applicat
 
 ## Live Demo
 
-[Live Link](https://catalogue-react-redux.herokuapp.com/)
-
-## Video Link
-
-[Video Link](https://www.loom.com/share/51272b1066dd4222a621466cb674f369)
+[Live Link](https://book-a-coach-12345.herokuapp.com/)
 
 ## Built With
 
