@@ -1,5 +1,5 @@
-<h2>Log in</h2>
-<div class="w-full max-w-xs">
+<h2 class="text-4xl text-bold">Log in</h2>
+<div class="flex items-center justify-center h-screen">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'}) do |f| %>
     <div class="mb-4">
       <%= f.label :email,  :class => "block text-gray-700 text-sm font-bold mb-2" %><br />
@@ -24,4 +24,3 @@
   <% end %>
 </div>
 
-<%= render "devise/shared/links" %>
