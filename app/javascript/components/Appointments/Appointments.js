@@ -1,7 +1,6 @@
-/* eslint-disable */
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { uid } from 'react-uid';
 
 const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -10,21 +9,22 @@ const Appointments = () => {
     const coachArr = {};
     axios
       .get('/api/v1/appointments.json')
-      .then((resp) => {
+      .then(resp => {
         setAppointments(resp.data.data);
-        resp.data.included.map((item) => {
+        resp.data.included.map(item => {
           coachArr[item.id] = {
             name: item.attributes.name,
             price: item.attributes.price,
           };
+          return null;
         });
         setCoaches(coachArr);
       })
-      .catch((err) => console.log(err));
+      .catch(err => err);
   }, []);
 
-  const grid = appointments.map((item) => (
-    <tr>
+  const grid = appointments.map(item => (
+    <tr key={uid(item)}>
       <td className="w-1/3 text-left py-3 px-4">
         {coaches[item.attributes.coach_id]?.name}
       </td>
@@ -40,18 +40,18 @@ const Appointments = () => {
   return (
     <div className="text-center w-full" style={{ marginLeft: '20%' }}>
       <h1 className="mt-8 mb-4 text-4xl font-bold">My Appointments</h1>
-      <div class="md:px-32 py-8 w-full">
-        <div class="shadow overflow-hidden rounded border-b border-gray">
-          <table class="min-w-full bg-white">
-            <thead class="bg-gray text-white">
+      <div className="md:px-32 py-8 w-full">
+        <div className="shadow overflow-hidden rounded border-b border-gray">
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray text-white">
               <tr>
-                <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
+                <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
                   Coach
                 </th>
-                <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
+                <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">
                   Price
                 </th>
-                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">
+                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">
                   Date / Time
                 </th>
               </tr>
@@ -65,5 +65,3 @@ const Appointments = () => {
 };
 
 export default Appointments;
-
-/* eslint-enable */
