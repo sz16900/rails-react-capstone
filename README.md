@@ -81,6 +81,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [Microverse](https://microverse.org)
+- [Zayne](https://zayne.io)
 
 ---
 
