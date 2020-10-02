@@ -44,7 +44,7 @@ const Review = props => {
 
 Review.propTypes = {
   attributes: PropTypes.shape({
-    score: PropTypes.number.isRequired,
+    score: PropTypes.number,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
