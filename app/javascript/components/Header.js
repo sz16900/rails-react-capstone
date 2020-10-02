@@ -1,29 +1,28 @@
-/* eslint-disable */
-
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import logo from '../../assets/images/Book-A-Coach.png';
 
 const GET_THINGS_REQUEST = 'GET_THINGS_REQUEST';
 const GET_THINGS_SUCCESS = 'GET_THINGS_SUCCESS';
-
-const getThings = () => (dispatch) => {
-  dispatch({ type: GET_THINGS_REQUEST });
-  return axios
-    .get('/api/v1/users.json')
-    .then((resp) => {
-      dispatch(getThingsSuccess(resp.data));
-    })
-    .catch((err) => console.log(err));
-};
-export const getThingsSuccess = (payload) => ({
+export const getThingsSuccess = payload => ({
   type: GET_THINGS_SUCCESS,
   payload,
 });
+
+const getThings = () => dispatch => {
+  dispatch({ type: GET_THINGS_REQUEST });
+  return axios
+    .get('/api/v1/users.json')
+    .then(resp => {
+      dispatch(getThingsSuccess(resp.data));
+    })
+    .catch(err => err);
+};
 
 class Header extends React.Component {
   handleLogout = () => {
@@ -36,7 +35,9 @@ class Header extends React.Component {
   };
 
   render() {
-    this.props.getThings();
+    const { getThings, name } = this.props;
+
+    getThings();
 
     return (
       <div
@@ -66,11 +67,13 @@ class Header extends React.Component {
             <button
               className="inline-block py-3 px-4 text-black font-bold hover:bg-red py-1 px-3"
               onClick={this.handleLogout}
+              type="button"
             >
-              Sign Out{' '}
+              Sign Out
+              {' '}
               <h5 className="text-xs text-gray">
                 of
-                {` ${this.props.name}`}
+                {` ${name}`}
               </h5>
             </button>
           </li>
@@ -89,12 +92,15 @@ class Header extends React.Component {
   }
 }
 
+Header.propTypes = {
+  getThings: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
 const structuredSelector = createStructuredSelector({
-  name: (state) => state.name,
+  name: state => state.name,
 });
 
 const mapDispatchtoProps = { getThings };
 
 export default connect(structuredSelector, mapDispatchtoProps)(Header);
-
-/* eslint-disable */

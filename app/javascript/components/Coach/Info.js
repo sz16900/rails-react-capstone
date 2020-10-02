@@ -51,7 +51,7 @@ Info.propTypes = {
     description: PropTypes.string.isRequired,
     tagline: PropTypes.string.isRequired,
     avg_score: PropTypes.number.isRequired,
-    score: PropTypes.number.isRequired,
+    score: PropTypes.number,
   }).isRequired,
 };
 
