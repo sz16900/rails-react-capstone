@@ -1,32 +1,47 @@
-/* eslint-disable */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Rating from '../Rating/Rating';
 
-const Coach = (props) => (
-  <Link to={`/coaches/${props.attributes.slug}`}>
-    <div id="card">
-      <div id="coach-logo">
-        <img
-          src={props.attributes.image_url}
-          alt={props.attributes.name}
-          width="150"
-          className="inline "
-        />
-      </div>
-      <h1 id="coach-name" className="mt-8 mb-4 text-lg font-bold">
-        {props.attributes.name}
-      </h1>
-      <Rating id="rating" score={props.attributes.avg_score} />
+const Coach = props => {
+  const { attributes } = props;
+  const {
+    name,
+    tagline,
+    slug,
+    imageUrl = attributes.image_url,
+    score = attributes.avg_score,
+  } = attributes;
 
-      <div id="tagline" className="text-sm text-gray">
-        {props.attributes.tagline}
+  return (
+    <Link to={`/coaches/${slug}`}>
+      <div id="card">
+        <div id="coach-logo">
+          <img src={imageUrl} alt={name} width="150" className="inline " />
+        </div>
+        <h1 id="coach-name" className="mt-8 mb-4 text-lg font-bold">
+          {name}
+        </h1>
+        <Rating id="rating" score={score} />
+
+        <div id="tagline" className="text-sm text-gray">
+          {tagline}
+        </div>
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
+
+Coach.propTypes = {
+  attributes: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    tagline: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    score: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+    avg_score: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Coach;
-
-/* eslint-enable */
