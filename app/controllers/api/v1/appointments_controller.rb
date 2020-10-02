@@ -4,23 +4,21 @@ module Api
       protect_from_forgery with: :null_session
 
       def index
-        if user_signed_in?
-          appointments = current_user.appointments
-          render json: AppointmentSerializer.new(appointments, options).serialized_json
-        else
-          render json: {}, status: 401
-        end
+        return render json: {}, status: 401 unless user_signed_in?
+
+        appointments = current_user.appointments
+        render json: AppointmentSerializer.new(appointments, options).serialized_json
       end
 
       def create
-        if user_signed_in?
-          appointment = coach.appointments.create(appointment_params.merge(user_id: current_user.id))
+        return unless user_signed_in?
 
-          if appointment.save
-            render json: AppointmentSerializer.new(appointment).serialized_json
-          else
-            render json: { error: appointment.errors.messages }, status: 422
-          end
+        appointment = coach.appointments.new(appointment_params.merge(user_id: current_user.id))
+
+        if appointment.save
+          render json: AppointmentSerializer.new(appointment).serialized_json
+        else
+          render json: { error: appointment.errors.messages }, status: 422
         end
       end
 

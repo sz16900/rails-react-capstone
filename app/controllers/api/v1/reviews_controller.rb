@@ -4,23 +4,18 @@ module Api
       protect_from_forgery with: :null_session
 
       def index
-        if user_signed_in?
-          render json: current_user.reviews
-        else
-          render json: {}, status: 401
-        end
+        return render json: {}, status: 401 unless user_signed_in?
+
+        render json: current_user.reviews
       end
 
       def create
-        if user_signed_in?
-          review = coach.reviews.create(review_params.merge(user_id: current_user.id))
+        return unless user_signed_in?
 
-          if review.save
-            render json: ReviewSerializer.new(review).serialized_json
-          else
-            render json: { error: review.errors.messages }, status: 422
-          end
-        end
+        review = coach.reviews.create(review_params.merge(user_id: current_user.id))
+        return render json: { error: review.errors.messages }, status: 422 unless review.save
+
+        render json: ReviewSerializer.new(review).serialized_json
       end
 
       def destroy
