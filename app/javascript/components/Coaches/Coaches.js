@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Coach from './Coach';
 
@@ -9,11 +7,11 @@ const Coaches = () => {
   useEffect(() => {
     axios
       .get('/api/v1/coaches.json')
-      .then((resp) => setCoaches(resp.data.data))
-      .catch((err) => console.log(err));
+      .then(resp => setCoaches(resp.data.data))
+      .catch(err => err);
   }, [coaches.length]);
 
-  const grid = coaches.map((item) => (
+  const grid = coaches.map(item => (
     <Coach key={item.attributes.name} attributes={item.attributes} />
   ));
 
@@ -31,5 +29,3 @@ const Coaches = () => {
 };
 
 export default Coaches;
-
-/* eslint-disable */

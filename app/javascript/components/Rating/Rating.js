@@ -1,10 +1,10 @@
-/* eslint-disable */
-
 import React from 'react';
 import './Rating.css';
+import PropTypes from 'prop-types';
 
 const Rating = props => {
-  const score = (props.score / 5) * 100;
+  let { score } = props;
+  score = (score / 5) * 100;
 
   return (
     <span className="star-wrapper">
@@ -13,6 +13,8 @@ const Rating = props => {
   );
 };
 
-export default Rating;
+Rating.propTypes = {
+  score: PropTypes.number,
+}.isRequired;
 
-/* eslint-enable */
+export default Rating;
