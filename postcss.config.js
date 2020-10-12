@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   plugins: [
     require('tailwindcss'),
@@ -12,3 +13,4 @@ module.exports = {
     }),
   ],
 };
+/* eslint-enable */

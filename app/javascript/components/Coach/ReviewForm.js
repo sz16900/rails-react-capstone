@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const RatingContainer = styled.div`
   text-align: center;
@@ -44,120 +45,59 @@ const RatingBox = styled.div`
   }
 `;
 
-const Field = styled.div`
-  border-radius: 4px;
-  input {
-    width: 96%;
-    min-height: 50px;
-    border-radius: 4px;
-    border: 1px solid #e6e6e6;
-    margin: 12px 0;
-    padding: 12px;
-  }
-
-  textarea {
-    width: 100%;
-    min-height: 80px;
-    border-radius: 4px;
-    border: 1px solid #e6e6e6;
-    margin: 12px 0;
-    padding: 12px;
-  }
-`;
-
-const SubmitBtn = styled.button`
-  color: #fff;
-  background-color: #71b406;
-  border-radius: 4px;
-  padding: 12px 12px;
-  border: 1px solid #71b406;
-  width: 100%;
-  font-size: 18px;
-  cursor: pointer;
-  transition: ease-in-out 0.2s;
-  &:hover {
-    background: #71b406;
-    border-color: #71b406;
-  }
-`;
-
-const ReviewWrapper = styled.div`
-  background: white;
-  padding: 20px;
-  margin-left: 15px;
-  border-radius: 0;
-  padding-bottom: 80px;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-  height: 100vh;
-  padding-top: 100px;
-  background: black;
-  padding-right: 80px;
-`;
-
-const ReviewHeadline = styled.div`
-  font-size: 20px;
-  padding: 15px 0;
-  font-weight: bold;
-  color: #fff;
-`;
-
 const RatingBoxTitle = styled.div`
   font-size: 20px;
   padding-bottom: 20px;
   font-weight: bold;
 `;
-
-const Error = styled.div`
-  width: 100%;
-  color: rgb(255, 80, 44);
-  border: 1px solid rgb(255, 80, 44);
-  border-radius: 4px;
-  margin-top: 8px;
-  text-align: center;
-  padding: 4px;
-`;
-
-const ReviewForm = (props) => {
-  const ratingOptions = [5, 4, 3, 2, 1].map((score, index) => {
-    return (
-      <Fragment>
-        <input
-          type="radio"
-          value={score}
-          name="rating"
-          id={`rating-${score}`}
-          checked={props.review.score == score}
-          onChange={() => console.log('selected:', score)}
-        ></input>
-        {/* Kinda lost here with the bind, but I think it binds to each score ([5,4,3,2,1]) bc we are looping through each score */}
-        <label onClick={props.setRating.bind(this, score)}></label>
-      </Fragment>
-    );
-  });
+const ReviewForm = props => {
+  const {
+    review,
+    setRating,
+    handleSubmitReview,
+    handleChangeReview,
+    error,
+  } = props;
+  const { title, description } = review;
+  const scre = review.score;
+  const ratingOptions = [5, 4, 3, 2, 1].map(score => (
+    /* eslint-disable */
+    <>
+      <input
+        type="radio"
+        value={score}
+        name="rating"
+        id={`rating-${score}`}
+        checked={scre === score}
+      />
+      <label onClick={setRating.bind(this, score)} />
+    </>
+    /* eslint-enable */
+  ));
   return (
     <div id="review-form-wrapper" className="w-full max-w-xs">
       <form
-        onSubmit={props.handleSubmitReview}
+        onSubmit={handleSubmitReview}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
       >
         <div className="mb-4">
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={props.handleChangeReview}
+            onChange={handleChangeReview}
             type="text"
             name="title"
             placeholder="Review Title"
-            value={props.review.title}
+            value={title}
           />
         </div>
         <div>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            onChange={props.handleChangeReview}
+            onChange={handleChangeReview}
             type="text"
             name="description"
             placeholder="Review Description"
-            value={props.review.description}
+            value={description}
           />
         </div>
         <div>
@@ -171,16 +111,30 @@ const ReviewForm = (props) => {
         <div className="flex items-center justify-center">
           <button
             className="bg-green hover:bg-greenHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="Submit"
+            type="submit"
           >
             Create Review
           </button>
 
-          {props.error && <div id="error">{props.error}</div>}
+          {error && <div id="error">{error}</div>}
         </div>
       </form>
     </div>
   );
+};
+
+ReviewForm.propTypes = {
+  error: PropTypes.string.isRequired,
+  handleSubmitReview: PropTypes.func.isRequired,
+  handleChangeReview: PropTypes.func.isRequired,
+  setRating: PropTypes.shape({
+    bind: PropTypes.func,
+  }).isRequired,
+  review: PropTypes.shape({
+    score: PropTypes.number,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 };
 
 export default ReviewForm;

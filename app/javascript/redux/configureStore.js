@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const rootReducer = (state, action) => {
-  console.log(action.type);
   switch (action.type) {
     case 'GET_THINGS_SUCCESS':
       return { name: action.payload };

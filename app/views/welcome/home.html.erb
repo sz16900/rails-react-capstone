@@ -1,10 +1,8 @@
-<nav style="text-align: right">
-<% if user_signed_in? %>
-    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>          
-  <% else %>
-    <%= link_to('Login', new_user_session_path)  %> |
-    <%= link_to('Sign Up', new_user_registration_path)  %>  
-  <% end %>
-</nav>
-<h1>Welcome#home</h1>
-<p>If you're logged in, check out <%= link_to "the app", app_path %>!</p>
+
+ <div class="flex flex-col items-center justify-center h-screen">
+ <%= image_tag('https://github.com/sz16900/rails-react-capstone/blob/master/app/assets/images/Book-A-Coach.png?raw=true')%>
+<div>
+  <%= link_to('Login', new_user_session_path, :class => 'bg-blue hover:bg-blueHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline')  %> 
+  <%= link_to('Sign Up', new_user_registration_path, :class => 'bg-yellow hover:bg-yellowHover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline')  %>  
+  </div>
+</div>

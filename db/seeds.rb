@@ -37,7 +37,28 @@ coaches = Coach.create([
         likes: 5,
         price: 55
 
+    },
+    {
+        name: "George Washington",
+        image_url: "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        age: 22,
+        tagline: "The President",
+        likes: 0,
+        price: 65
+
+    },
+    {
+        name: "Ron Jon",
+        image_url: "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        age: 22,
+        tagline: "The Surfer",
+        likes: 0,
+        price: 15
+
     }
+
 ])
 
 users = User.create([
